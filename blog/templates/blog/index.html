@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+My Blog
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/post.css' %}">
+<link rel="stylesheet" href="{% static 'blog/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<header id="main-navigation">
+    <h1><a href="">Software Engineer</a></h1>
+    <nav>
+        <a href="{% url 'posts-page' %}">All Projects</a>
+    </nav>
+</header>
+<section id="welcome">
+    <header>
+        <img src="{% static 'blog/images/jmbg.jpg' %}" alt="Manuel - The Author Of This Blog">
+        <h2>Manuel Bustillo</h2>
+    </header>
+    <p>Hi, my name is Manuel Bustillo I am a software developer doing backend with python and Django</p>
+</section>
+
+<section id="latest-posts">
+    <h2>My Last Projects</h2>
+
+    <ul>
+        {% for post in all_posts %}
+          {% include "blog/includes/post.html" %} 
+        {% endfor %}
+    </ul>
+
+</section>
+<section id="about">
+    <h2>About Me</h2>
+    <p>I am a software developer focused on the backend with python and Django. I studied physics at the National Autonomous University Of Honduras; where I have some experience working in C++ (basic knowledge) and python with emphasis in data science working with different libraries like pandas, NumPy and others.</p>
+
+</section>
+{% endblock %}
